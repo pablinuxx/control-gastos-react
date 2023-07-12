@@ -70,7 +70,7 @@ export const Modal = ({
             type="number"
             placeholder="Añade la Cantiadad del Gasto: ej. 300"
             value={cantidad}
-            onChange={(e) => setCantidad(e.target.value)}
+            onChange={(e) => setCantidad(Number(e.target.value))}
           />
         </div>
 
