@@ -29,9 +29,20 @@ function App() {
     }, 500);
   };
   const guardarGasto = (gasto) => {
-    gasto.id = generarID();
-    gasto.fecha = Date.now();
-    setGastos([...gastos, gasto]);
+    if (gasto.id) {
+      //Actualizar
+      const gastosActualizado = gastos.map((gastoState) =>
+        gastoState.id === gasto.id ? gasto : gastoState
+      );
+      setGastos(gastosActualizado);
+    } else {
+      //Nuevo Gasto
+
+      gasto.id = generarID();
+      gasto.fecha = Date.now();
+      setGastos([...gastos, gasto]);
+    }
+
     setAnimarModal(false);
     setTimeout(() => {
       setModal(false);

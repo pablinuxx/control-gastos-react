@@ -12,12 +12,16 @@ export const Modal = ({
   const [nombre, setNombre] = useState("");
   const [cantidad, setCantidad] = useState(0);
   const [categoria, setCategoria] = useState("");
+  const [fecha, setFecha] = useState("");
+  const [id, setId] = useState("");
 
   useEffect(() => {
     if (Object.keys(gastoEditar).length > 0) {
       setNombre(gastoEditar.nombre);
       setCantidad(gastoEditar.cantidad);
       setCategoria(gastoEditar.categoria);
+      setId(gastoEditar.id);
+      setFecha(gastoEditar.fecha);
     }
   }, []);
   const cerrarModal = () => {
@@ -42,6 +46,8 @@ export const Modal = ({
       nombre,
       cantidad,
       categoria,
+      id,
+      fecha,
     });
   };
 
@@ -58,7 +64,7 @@ export const Modal = ({
         className={`formulario ${animarModal ? "animar" : "cerrar"}`}
         onSubmit={handleSubmit}
       >
-        <legend>Nuevo Gasto</legend>
+        <legend> {gastoEditar.nombre ? "Editar Gasto" : "Nuevo Gasto"} </legend>
         {mensaje && <Mensaje tipo="error">{mensaje}</Mensaje>}
         <div className="campo">
           <label htmlFor="nombre">Nombre</label>
@@ -101,7 +107,10 @@ export const Modal = ({
             <option value="suscripciones">Suscripciones</option>
           </select>
         </div>
-        <input type="submit" value="Añadir Gasto" />
+        <input
+          type="submit"
+          value={gastoEditar.nombre ? "Guardar Cambios" : "Añadir Gasto"}
+        />
       </form>
     </div>
   );
