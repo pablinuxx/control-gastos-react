@@ -13,3 +13,6 @@ Tecnologias:
 
 GitHub: https://github.com/pablinuxx/control-gastos-react
 Live Preview:
+![Alt text](image.png)
+![Alt text](image-1.png)
+![Alt text](image-2.png)
